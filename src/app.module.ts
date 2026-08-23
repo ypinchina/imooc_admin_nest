@@ -23,7 +23,9 @@ const password = fs.readFileSync(passwordPath).toString();
       username,
       password,
       host: 'localhost',
-      port: 3306
+      port: 3306,
+      database: 'vben-book-dev',
+      autoLoadEntities: true
     }),
     UserModule, AuthModule, BookModule,],
   controllers: [AppController, AuthController, BookController],
