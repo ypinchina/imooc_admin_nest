@@ -11,6 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
+import { AuthService } from './modules/auth/auth.service';
 const homedir = os.homedir();
 const usernamePath = path.resolve(homedir, 'vben', 'username');
 const username = fs.readFileSync(usernamePath).toString();
