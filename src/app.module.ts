@@ -5,13 +5,10 @@ import { TestService } from './test.service';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { BookModule } from './modules/book/book.module';
-import { AuthController } from './modules/auth/auth.controller';
-import { BookController } from './modules/book/book.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
-import { AuthService } from './modules/auth/auth.service';
 const homedir = os.homedir();
 const usernamePath = path.resolve(homedir, 'vben', 'username');
 const username = fs.readFileSync(usernamePath).toString();
@@ -29,7 +26,7 @@ const password = fs.readFileSync(passwordPath).toString();
       autoLoadEntities: true
     }),
     UserModule, AuthModule, BookModule,],
-  controllers: [AppController, AuthController, BookController],
+  controllers: [AppController],
   providers: [AppService, TestService],
 })
 export class AppModule { }

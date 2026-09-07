@@ -25,4 +25,9 @@ export class UserService {
     deleteUser(id: string): Promise<DeleteResult> {
         return this.userRepository.delete(id)
     }
+    async loginByUserName(username: string): Promise<User | null> {
+        const user = await this.userRepository.findOneBy({ username });
+        console.log(user)
+        return user
+    }
 }
