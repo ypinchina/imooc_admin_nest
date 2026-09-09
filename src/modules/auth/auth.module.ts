@@ -12,7 +12,6 @@ import { UserModule } from '../user/user.module';
         provide: APP_GUARD,
         useClass: AuthGuard
     }
-    ],
-    exports: [UserModule]
+    ]
 })
 export class AuthModule { }
