@@ -4,9 +4,12 @@ import { AuthService } from './auth.service';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth.guard';
 import { UserModule } from '../user/user.module';
-
+import { JwtModule } from '@nestjs/jwt';
 @Module({
-    imports: [UserModule],
+    imports: [UserModule, JwtModule.register({
+        secret: 'suprise', // 生产环境放到环境变量
+        signOptions: { expiresIn: '24h' },
+    }),],
     controllers: [AuthController],
     providers: [AuthService, {
         provide: APP_GUARD,

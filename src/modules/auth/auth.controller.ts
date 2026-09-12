@@ -8,9 +8,15 @@ export class AuthController {
     @Public()
     @Post('/login')
     @UseFilters(HttpExceptionFilter)
-    async login(@Body() params) {
-        await this.authService.login(params.username, params.password)
-        return 'auth'
+    login(@Body() params) {
+        return this.authService.login(params.username, params.password).then(res => {
+            return {
+                status: 0,
+                mesg: '登录成功'
+            }
+        }).catch(err => {
+            return err
+        })
     }
 
 }
