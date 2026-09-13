@@ -12,7 +12,8 @@ export class AuthController {
         return this.authService.login(params.username, params.password).then(res => {
             return {
                 status: 0,
-                mesg: '登录成功'
+                mesg: '登录成功',
+                data: res
             }
         }).catch(err => {
             return err
