@@ -11,8 +11,13 @@ export class UserService {
     ) {
 
     }
-    getUser(param): Promise<User | null> {
-        return this.userRepository.findOneBy({ id: param.id });
+    async getUser(param): Promise<Object | null> {
+        return {
+            code: 0,
+            message: '获取用户信息成功',
+            result: await this.userRepository.findOneBy({ id: param.id })
+        }
+
     }
     getAll(): Promise<User[] | null> {
         return this.userRepository.find();

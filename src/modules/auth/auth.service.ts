@@ -14,11 +14,11 @@ export class AuthService {
         if (user?.password !== md5Password) {
             throw new UnauthorizedException();
         } else {
-            const payload = { username: user?.username };
+            const payload = { username: user?.username, id: user?.id, role: user?.role };
             return {
                 // 💡 Here the JWT secret key that's used for signing the payload 
                 // is the key that was passed in the JwtModule
-                access_token: await this.jwtService.signAsync(payload),
+                token: await this.jwtService.signAsync(payload),
             };
         }
     }
